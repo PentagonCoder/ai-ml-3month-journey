@@ -111,7 +111,7 @@ print (
 
 ############################################################
 
-print(round(338424, -3)) output 3384000
+print(round(338424, -3)) #output 3384000
 
 ############################################################
 # Boolean conversion
@@ -120,3 +120,65 @@ print(bool(1)) # True
 print(bool(0)) # False
 print(bool("asf")) # True
 print(bool("")) # False
+
+print(1 and 0) # False
+print(0 or 0) # False
+print( not 0) # True
+
+############################################################
+
+# Lists : lists can contain a mix of different types of variables:
+
+my_favourite_things = [32, 'raindrops on roses', max]
+
+print(my_favourite_things)
+
+print(my_favourite_things[0])
+print(my_favourite_things[1])
+print(my_favourite_things[2])
+
+print(my_favourite_things[0])
+print(my_favourite_things[1])
+print(my_favourite_things[2])
+
+primes = [2, 3, 5, 7]
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Sa☻turn', 'Uranus', 'Neptune']
+
+############################################################
+
+# Loops
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+for planet in planets:
+  print(planet, end=' ') # print all on same line
+  
+# range : useful for writing loops.
+for i in range(5):
+  print("Doing important work. i =", i)
+  
+#  while loops
+i = 0
+while i < 5:
+  print("Doing important work. i =", i)
+  i += 1
+
+# enumerate
+for i, planet in enumerate(planets):
+  print("Planet", i, "is", planet)
+  
+# List comprehensions
+squares = [n**2 for n in range(10)]
+print(squares) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+short_planets = [planet for planet in planets if len(planet) < 6]
+print(short_planets) # ['Venus', 'Earth', 'Mars']
+
+with_vowels = [planet for planet in planets if 'a' in planet]
+print(with_vowels) # ['Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus']
+
+##############################################################
+
+# String syntax
+
+x = 'Pluto is a planet'
+y = "Pluto is a planet"
+x == y
