@@ -159,3 +159,64 @@ a = np.array([
 b = np.array([10, 20])
 
 print(a + b)
+
+
+# Part 1 — Boolean Masking and Filtering
+
+marks = np.array([35, 80, 45, 90, 25, 70, 95])
+print(marks[marks > 60]) # [80 90 70 95]
+print(marks[marks == 70]) # [70]
+print(marks[marks != 70]) # [35 80 45 90 25 95]
+
+print("And ", marks[(marks > 60) & (marks < 90)]) # [80 70]
+print("Or ", marks[(marks < 40) | (marks > 90)]) # [35 25 95]
+mark = marks > 60
+print(mark) # [False  True False  True False  True  True]
+
+# Part 2 — Reshape and Transpose
+
+# reshape() reorganizes elements according to the specified shape and traversal order.
+a = np.array([1, 2, 3, 4, 5, 6])
+print(a.reshape(3, 2))
+print(a.reshape(2, -1))
+print(a.reshape(-1, 2))
+print(a)
+
+# transpose() rearranges the array's axes.
+b = a.reshape(2, 3)
+print("Original shape:", b)
+print("Transposed shape:", b.T)
+
+# Part 3 — Aggregate Functions
+print(np.sum(a))
+print(np.mean(a))
+print(np.min(a))  
+print(np.max(a))
+print("Standard deviation:", np.std(a)) # by default ddof = 0
+
+
+# Why does standard deviation matter in ML?
+a = np.array([48, 49, 50, 51, 52])
+b = np.array([10, 30, 50, 70, 90])
+
+# both has same mean
+print("Mean of a:", np.mean(a))
+print("Mean of b:", np.mean(b))
+# but different standard deviation
+
+print("Standard deviation of a:", np.std(a)) # a has smaller deviation mean value than b
+print("Standard deviation of b:", np.std(b))
+
+
+
+# 3.2 Aggregation along an axis
+a = np.array([
+  [10, 20, 30],
+  [40, 50, 60]
+])
+
+print(np.sum(a, Axis=0))  # sum along columns
+print(np.sum(a, Axis=1))  # sum along rows
+print(np.mean(a))
+print(np.min(a))  
+print(np.max(a))
