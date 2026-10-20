@@ -149,5 +149,50 @@ print(df.dropna(subset=["Marks"]))
 # print(df)
 print(df[pd.isnull(df["City"])])
 
+
+df = pd.read_csv("students.csv")
 # 4. groupby() — one of the most useful Pandas skills
 ########################################################
+print(df.groupby("City")["Marks"].mean())
+print(df.groupby("City")["Marks"].agg(["mean", "max", "min", "count"]))
+print(df.groupby(["City", "Age"])["Marks"].mean())
+print(df["City"].value_counts(normalize=True))
+
+# quiz
+# Select rows and columns
+# Use .loc to select the rows with index labels 1 through 4, inclusive, and display only Name and Marks.
+print(df.loc[1:4, ["Name", "Marks"]])
+
+data = {
+    "Name": ["Rahul", "Priya", "Aman", "Sneha"],
+    "Age": [20, 21, None, 20],
+    "Marks": [85, None, 67, 88],
+    "City": ["Kanpur", "Lucknow", None, "Kanpur"]
+}
+df = pd.DataFrame(data)
+# Handle missing values
+# - Count missing values in each column.
+# - Fill missing Marks with the mean of the available marks.
+# - Print the updated Marks column.
+# Hint: isna().sum() and fillna().
+print(df.isna().sum())
+df["Marks"]=df["Marks"].fillna(df["Marks"].mean())
+print(df["Marks"])
+print(df)
+
+# Group and aggregate
+# For each city, calculate:
+# - Average marks
+# - Maximum marks
+# - Number of non-missing marks
+# Hint: Combine groupby() with agg().
+print(df.groupby("City")["Marks"].agg(["mean", "max", "count"]))
+
+# Sort the students
+# Display the full DataFrame with marks sorted from highest to lowest.
+print(df.sort_values(by="Marks", ascending=False))
+
+# Count categories
+# Count how many students belong to each city. Then calculate the proportion of students from each city.
+print(df["City"].value_counts())
+print(df["City"].value_counts(normalize=True))
